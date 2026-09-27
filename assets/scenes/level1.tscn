@@ -117,4 +117,5 @@ scale = Vector2(1.9056492, 0.86562705)
 position = Vector2(242, 154)
 
 [node name="TungstenCrash" type="AnimatedSprite2D" parent="." unique_id=1005074890]
+scale = Vector2(0.5966382, 0.5966382)
 sprite_frames = SubResource("SpriteFrames_aexf2")

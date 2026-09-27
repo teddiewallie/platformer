@@ -2,9 +2,67 @@
 
 [ext_resource type="Script" uid="uid://bfjll2h3tf133" path="res://assets/scripts/Projectile.gd" id="1_scc3m"]
 [ext_resource type="Texture2D" uid="uid://delrg6kmlkmfu" path="res://assets/sprites/projectile.png" id="1_uxq6y"]
+[ext_resource type="Texture2D" uid="uid://b61l73t8x8txx" path="res://assets/sprites/poof.png" id="2_ldy4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyx3v"]
 size = Vector2(2, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajs7r"]
+atlas = ExtResource("2_ldy4p")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc7ey"]
+atlas = ExtResource("2_ldy4p")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db1ja"]
+atlas = ExtResource("2_ldy4p")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilqbf"]
+atlas = ExtResource("2_ldy4p")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgban"]
+atlas = ExtResource("2_ldy4p")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrqeh"]
+atlas = ExtResource("2_ldy4p")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dchkw"]
+atlas = ExtResource("2_ldy4p")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aexf2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajs7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc7ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db1ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilqbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgban")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrqeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dchkw")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 25.0
+}]
 
 [node name="Projectile" type="Area2D" unique_id=328195468]
 script = ExtResource("1_scc3m")
@@ -12,5 +70,14 @@ script = ExtResource("1_scc3m")
 [node name="CollisionProjectile" type="CollisionShape2D" parent="." unique_id=1994275252]
 shape = SubResource("RectangleShape2D_uyx3v")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=332116438]
+scale = Vector2(0.3024331, 0.3024331)
+sprite_frames = SubResource("SpriteFrames_aexf2")
+frame = 6
+frame_progress = 1.0
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=510731852]
 texture = ExtResource("1_uxq6y")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=501386255]
+target_position = Vector2(-6, 0)
