@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://lueqvf0l4w01"]
+
+[ext_resource type="PackedScene" uid="uid://bx6lc7xgfja4x" path="res://assets/scenes/player.tscn" id="1_14qug"]
+[ext_resource type="PackedScene" uid="uid://bkv7klhj60tjn" path="res://assets/scenes/world_borders.tscn" id="2_4g7pb"]
+[ext_resource type="PackedScene" uid="uid://bdoi6vwhldf0b" path="res://assets/scenes/platform.tscn" id="3_0ejtv"]
+[ext_resource type="PackedScene" uid="uid://dbhoywaibphw4" path="res://assets/scenes/weak_platform.tscn" id="4_6khq1"]
+[ext_resource type="Texture2D" uid="uid://bskswq7v2yurj" path="res://assets/sprites/tungsten_crack.png" id="5_lr0kx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoos5"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyog1"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aev3"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0uwh"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbvyv"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uki8p"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khpyu"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egbb6"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1mtp"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(192, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o48e"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(216, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3v2w"]
+atlas = ExtResource("5_lr0kx")
+region = Rect2(240, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aexf2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoos5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyog1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4aev3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0uwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbvyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uki8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khpyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egbb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1mtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o48e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3v2w")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 25.0
+}]
+
+[node name="Level1" type="Node2D" unique_id=760396260]
+
+[node name="Player" parent="." unique_id=1900816397 instance=ExtResource("1_14qug")]
+position = Vector2(384, 231)
+scale = Vector2(0.6, 0.6)
+
+[node name="WorldBorders" parent="." unique_id=1399787925 instance=ExtResource("2_4g7pb")]
+position = Vector2(161, 242)
+
+[node name="platform2" parent="." unique_id=1683645362 instance=ExtResource("3_0ejtv")]
+position = Vector2(21, 80)
+
+[node name="platform3" parent="." unique_id=1272963056 instance=ExtResource("3_0ejtv")]
+position = Vector2(179, 186)
+rotation = -1.5707964
+scale = Vector2(1.9056492, 0.86562705)
+
+[node name="platform4" parent="." unique_id=1932313436 instance=ExtResource("3_0ejtv")]
+position = Vector2(224, 186)
+rotation = -1.5707964
+scale = Vector2(1.9056492, 0.86562705)
+
+[node name="WeakPlatform" parent="." unique_id=2012462522 groups=["weak_platform"] instance=ExtResource("4_6khq1")]
+position = Vector2(242, 154)
+
+[node name="TungstenCrash" type="AnimatedSprite2D" parent="." unique_id=1005074890]
+sprite_frames = SubResource("SpriteFrames_aexf2")

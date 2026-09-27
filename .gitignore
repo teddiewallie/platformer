@@ -1,0 +1,29 @@
+# Godot 4+ editor metadata
+.godot/
+
+# Godot 3
+.import/
+
+# Exported builds
+/export/
+/exports/
+
+# Mono / .NET
+.mono/
+data_*/
+mono_crash.*.json
+
+# C# build artifacts
+bin/
+
+obj/
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
