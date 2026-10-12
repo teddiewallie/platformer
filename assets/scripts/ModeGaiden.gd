@@ -122,3 +122,8 @@ func handle_animation():
 
 	if !Input.is_anything_pressed():
 		player.animated_gaiden.play("stand")
+
+func handle_collisions():
+	if player.is_touching_bad_platform():
+		player.to_spawn()
+		player.animated_gaiden.play("poof")

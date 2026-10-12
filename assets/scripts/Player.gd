@@ -6,6 +6,8 @@ var flip_h = false
 var current_mode: Mode
 var old_mode: Mode
 
+@onready var spawn_position = global_position
+
 @onready var collision_contra = $CollisionContra
 @onready var animated_contra = $AnimatedContra
 
@@ -57,3 +59,19 @@ func switch_modes():
 
 	old_mode.exit()
 	current_mode.init(old_mode.flip_h)
+	
+func is_touching_bad_platform():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+
+		if not collider is TileMapLayer:
+			continue
+
+		if collider.name == "BadPlatform":
+			return true
+			
+func to_spawn():
+	global_position = spawn_position
+	velocity.x = 0
+	velocity.y = 0

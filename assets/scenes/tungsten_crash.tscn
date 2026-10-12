@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://6x1wmde1761t"]
+
+[ext_resource type="Texture2D" uid="uid://bskswq7v2yurj" path="res://assets/sprites/tungsten_crack.png" id="1_ana4d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1elt"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3m3s"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr076"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c0ws"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f2mr"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esegg"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8377o"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8thqr"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkkw8"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(192, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhcv6"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(216, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6op1t"]
+atlas = ExtResource("1_ana4d")
+region = Rect2(240, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aexf2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1elt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3m3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr076")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c0ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f2mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esegg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8377o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8thqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkkw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhcv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6op1t")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 25.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1436723955]
+sprite_frames = SubResource("SpriteFrames_aexf2")

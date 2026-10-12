@@ -289,7 +289,6 @@ position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_aexf2")
 
 [node name="AnimatedContra" type="AnimatedSprite2D" parent="." unique_id=130079598]
-visible = false
 sprite_frames = SubResource("SpriteFrames_tgshg")
 animation = &"stand"
 
@@ -324,3 +323,6 @@ visible = false
 position = Vector2(0, 10)
 sprite_frames = SubResource("SpriteFrames_m7nt7")
 animation = &"stand"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2017724861]
+zoom = Vector2(0.8, 0.8)

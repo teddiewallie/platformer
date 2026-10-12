@@ -4,7 +4,11 @@ extends Mode
 
 var max_speed = 0
 
-var ignored_platforms = []
+var current_collider = null
+
+var ignored_platforms = {}
+
+var tungsten_crash = preload("res://assets/scenes/Tungsten_crash.tscn")
 
 func _init(player):
 	super(player, max_speed)
@@ -18,9 +22,10 @@ func init(flip_h):
 	player.animated_tungsten.play("poof")
 
 func exit():
-	# Restore any weak platforms Tungsten has ignored.
 	for platform in ignored_platforms:
 		platform.get_node("CollisionShape2D").set_deferred("disabled", false)
+	if current_collider:
+		current_collider.collision_enabled = true;
 
 	ignored_platforms.clear()
 
@@ -50,17 +55,22 @@ func handle_collisions():
 		var collision = player.get_slide_collision(i)
 		var collider = collision.get_collider()
 
-		if collider.is_in_group("weak_platform"):
-			if collider not in ignored_platforms:
-				collider.get_node("CollisionShape2D").set_deferred("disabled", true)
-				ignored_platforms.append(collider)
+		if not collider is TileMapLayer:
+			continue
 
-				var hit_position = collision.get_position()
-				player.get_parent().get_node("TungstenCrash").global_position = hit_position + Vector2(-4, 4)
-				player.get_parent().get_node("TungstenCrash").play("default")
+		if collider.name != "WeakPlatform":
+			continue
+			
+		current_collider = collider
 
-	# Restore platforms once Tungsten has passed below them.
-	for platform in ignored_platforms.duplicate():
-		if player.global_position.y > platform.global_position.y:
-			platform.get_node("CollisionShape2D").set_deferred("disabled", false)
-			ignored_platforms.erase(platform)
+		var hit_position = collision.get_position()
+
+		var crash = tungsten_crash.instantiate()
+		crash.global_position = hit_position + Vector2(-4, 4)
+		player.get_parent().add_child(crash)
+		crash.play("default")
+		
+		collider.collision_enabled = false;
+		await player.get_tree().create_timer(0.5).timeout
+		collider.collision_enabled = true;
+		current_collider = null
