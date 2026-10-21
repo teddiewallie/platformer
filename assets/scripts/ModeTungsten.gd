@@ -50,15 +50,19 @@ func handle_animation():
 
 	player.animated_tungsten.play("stand")
 
+func can_die():
+	return false
+
 func handle_collisions():
 	for i in player.get_slide_collision_count():
 		var collision = player.get_slide_collision(i)
 		var collider = collision.get_collider()
 
-		if not collider is TileMapLayer:
+		var hit_normal = collision.get_normal()
+		if hit_normal.y > 0:
 			continue
 
-		if collider.name != "WeakPlatform":
+		if !collider.is_in_group("weak"):
 			continue
 			
 		current_collider = collider
@@ -66,8 +70,8 @@ func handle_collisions():
 		var hit_position = collision.get_position()
 
 		var crash = tungsten_crash.instantiate()
-		crash.global_position = hit_position + Vector2(-4, 4)
 		player.get_parent().add_child(crash)
+		crash.global_position = hit_position + Vector2(-4, 4)
 		crash.play("default")
 		
 		collider.collision_enabled = false;

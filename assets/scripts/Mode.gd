@@ -53,6 +53,8 @@ func horizontal_movement(delta):
 			(acceleration / 2) * delta
 		)
 
+func can_die():
+	pass
 
 func vertical_movement():
 	pass

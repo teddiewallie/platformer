@@ -1,7 +1,48 @@
 [gd_scene format=3 uid="uid://bayeelmlrlow3"]
 
-[ext_resource type="PackedScene" uid="uid://lueqvf0l4w01" path="res://assets/scenes/level1.tscn" id="2_dis88"]
+[ext_resource type="Script" uid="uid://ddpk8ak1vjewo" path="res://assets/scripts/World.gd" id="1_dis88"]
+[ext_resource type="FontFile" uid="uid://7a02vsak8ogo" path="res://assets/fonts/DiaryOfAn8BitMage-lYDD.ttf" id="2_5gf0t"]
+[ext_resource type="Shader" uid="uid://cemgsy6r6l38c" path="res://assets/shader/crt.gdshader" id="2_cb5na"]
+[ext_resource type="PackedScene" uid="uid://lueqvf0l4w01" path="res://assets/scenes/level1.tscn" id="4_cb5na"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3w2km"]
+shader = ExtResource("2_cb5na")
+shader_parameter/line_strength = 0.2
+shader_parameter/line_height = 5.0
+shader_parameter/line_thickness = 0.8
+shader_parameter/brightness = 1.15
+shader_parameter/bleed_strength = 0.1
+shader_parameter/bleed_radius = 1.0
+shader_parameter/noise_strength = 0.045
+shader_parameter/noise_speed = 1.2
 
 [node name="Game" type="Node2D" unique_id=760396260]
+script = ExtResource("1_dis88")
 
-[node name="level1" parent="." unique_id=231612493 instance=ExtResource("2_dis88")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=639501265]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=470087674]
+material = SubResource("ShaderMaterial_3w2km")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_right = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.8623383, 1.7785093)
+metadata/_edit_use_anchors_ = true
+
+[node name="Ticker" type="Label" parent="CanvasLayer" unique_id=2096419947]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.60784316, 0.7372549, 0.05882353, 1)
+theme_override_colors/font_outline_color = Color(0.54509807, 0.6745098, 0.05882353, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_5gf0t")
+theme_override_font_sizes/font_size = 12
+
+[node name="Level1" parent="." unique_id=231612493 instance=ExtResource("4_cb5na")]
+position = Vector2(32, 112)

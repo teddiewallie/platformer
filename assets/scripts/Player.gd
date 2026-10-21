@@ -3,8 +3,8 @@ extends CharacterBody2D
 var gravity = 200
 
 var flip_h = false
-var current_mode: Mode
-var old_mode: Mode
+var current_mode
+var old_mode
 
 @onready var spawn_position = global_position
 
@@ -30,6 +30,9 @@ func _ready():
 	current_mode.init(flip_h)
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_suicide"):
+		Events.player_died.emit()
+		
 	switch_modes()
 
 	current_mode.handle_gravity(delta)
@@ -60,18 +63,17 @@ func switch_modes():
 	old_mode.exit()
 	current_mode.init(old_mode.flip_h)
 	
-func is_touching_bad_platform():
+func is_touching_bad():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 
-		if not collider is TileMapLayer:
-			continue
-
-		if collider.name == "BadPlatform":
+		if collider.is_in_group("bad"):
 			return true
 			
 func to_spawn():
+	print("TO SPAWN")
 	global_position = spawn_position
 	velocity.x = 0
 	velocity.y = 0
+	Events.player_reset.emit()

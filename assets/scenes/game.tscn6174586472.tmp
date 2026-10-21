@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bayeelmlrlow3"]
+
+[ext_resource type="Script" uid="uid://ddpk8ak1vjewo" path="res://assets/scripts/World.gd" id="1_dis88"]
+[ext_resource type="PackedScene" uid="uid://lueqvf0l4w01" path="res://assets/scenes/level1.tscn" id="2_dis88"]
+
+[node name="Game" type="Node2D" unique_id=760396260]
+script = ExtResource("1_dis88")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=639501265]
+
+[node name="Ticker" type="Label" parent="CanvasLayer" unique_id=2096419947]
+offset_left = 56.0
+offset_top = -152.0
+offset_right = 96.0
+offset_bottom = -129.0
+
+[node name="level1" parent="." unique_id=231612493 instance=ExtResource("2_dis88")]

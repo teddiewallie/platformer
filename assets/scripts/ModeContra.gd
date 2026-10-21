@@ -6,6 +6,7 @@ var max_speed = 50
 
 func _init(player):
 	super(player, max_speed)
+	Events.player_died.connect(contra_died)
 
 func init(flip_h):
 	self.flip_h = flip_h
@@ -16,6 +17,10 @@ func init(flip_h):
 func exit():
 	player.collision_contra.disabled = true
 	player.animated_contra.visible = false
+
+func contra_died():
+	player.to_spawn()
+	player.animated_contra.play("poof")
 
 func handle_gravity(delta):
 	player.velocity.y += player.gravity * delta
@@ -49,8 +54,10 @@ func handle_animation():
 
 	if !Input.is_anything_pressed():
 			player.animated_contra.play("stand")
+
+func can_die():
+	return true
 			
 func handle_collisions():
-	if player.is_touching_bad_platform():
-		player.to_spawn()
-		player.animated_contra.play("poof")
+	if player.is_touching_bad():
+		Events.player_died.emit()

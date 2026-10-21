@@ -31,6 +31,7 @@ func wall_ray_colliding():
 
 func _init(player):
 	super(player, max_speed)
+	Events.player_died.connect(gaiden_died)
 
 func init(flip_h):
 	self.flip_h = flip_h
@@ -46,6 +47,10 @@ func exit():
 	player.collision_gaiden.disabled = true
 	player.animated_gaiden.visible = false
 	wall_ray_enabled(false)
+
+func gaiden_died():
+	player.to_spawn()
+	player.animated_gaiden.play("poof")
 
 func handle_gravity(delta):
 	if player.is_on_wall() and wall_ray_colliding():
@@ -123,7 +128,9 @@ func handle_animation():
 	if !Input.is_anything_pressed():
 		player.animated_gaiden.play("stand")
 
+func can_die():
+	return true
+
 func handle_collisions():
-	if player.is_touching_bad_platform():
-		player.to_spawn()
-		player.animated_gaiden.play("poof")
+	if player.is_touching_bad():
+		Events.player_died.emit()
